@@ -3,8 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.effect.ImageInput?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -18,15 +17,11 @@
          <AnchorPane />
       </children>
    </Group>
-    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#account" prefHeight="576.0" prefWidth="723.0" text="Bobby's Bank of Teyvat" translateY="-17.0">
+    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#account" prefHeight="590.0" prefWidth="723.0" style="-fx-background-color: #373656;" text="Bobby's Bank of Teyvat" textFill="#6f8bf7" translateY="-17.0">
       <font>
          <Font name="Jokerman" size="54.0" />
       </font>
       <effect>
-         <ImageInput y="10.0">
-            <source>
-               <Image url="file:/C:/Users/student/Downloads/Untitled%20design.png" />
-            </source>
-         </ImageInput>
+         <Bloom />
       </effect></Button>
 </VBox>
