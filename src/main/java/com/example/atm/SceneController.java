@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -26,12 +27,14 @@ import javafx.scene.layout.GridPane;
 import java.io.IOException;
 
 import java.io.IOException;
+
+import static javafx.scene.layout.Background.*;
+
 public class SceneController {
     private Stage stage;
     private Scene scene;
     private String username;
     private String password;
-    Accounts account = new Accounts("Bobby", "123");
 
     public void account(ActionEvent event) throws IOException {
         Parent mainMenu = FXMLLoader.load(getClass().getResource("accountsstuff.fxml"));
@@ -56,37 +59,41 @@ public class SceneController {
     }
 
     public void createAccount(ActionEvent event) throws IOException {
-        Text user = new Text("Create a Username: ");
-        user.setX(100);
-        user.setY(90);
-        Text pass = new Text("Create a Password: ");
-        pass.setX(100);
-        pass.setY(200);
         Button create = new Button("Create");
         Group root = new Group();
-        Scene menu = new Scene(root, 723, 576);
+        Scene menu = new Scene(root, 723, 576, Color.web("#373656", 1.0));
         TextField username = new TextField();
+        username.setStyle("-fx-text-inner-color: #FFFFFF;");
+        username.setPromptText("Create a username: ");
+        username.setFocusTraversable(false);
+        username.setBackground(fill(Color.web("#4c4c71", 1.0)));
         username.setPrefSize(200, 25);
         username.setLayoutX(100);
         username.setLayoutY(100);
         TextField password = new TextField();
+        password.setStyle("-fx-text-inner-color: #FFFFFF;");
+        password.setPromptText("Create a password: ");
+        password.setFocusTraversable(false);
+        password.setBackground(fill(Color.web("#4c4c71", 1.0)));
         password.setPrefSize(200, 25);
         password.setLayoutX(100);
         password.setLayoutY(210);
         Text result = new Text();
         result.setDisable(true);
         result.setVisible(false);
-        root.getChildren().addAll(user, pass, username, password, create, result);
+        result.setX(100);
+        result.setY(300);
+        root.getChildren().addAll(username, password, create, result);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(menu);
         stage.show();
 
         create.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                account.setAccount(username.getText(), password.getText());
+                System.out.println(username.getText());
+                result.setText(Accounts.createAccount(username.getText(), password.getText()));
                 result.setDisable(false);
                 result.setVisible(true);
-                result.setText(Accounts.createAccount(username.getText(), password.getText()));
             }
         });
     }

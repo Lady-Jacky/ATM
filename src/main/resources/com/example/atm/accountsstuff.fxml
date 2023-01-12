@@ -34,24 +34,32 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.atm.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="723.0" style="-fx-background-color: #373656;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.atm.SceneController">
    <children>
-      <Button layoutX="121.0" layoutY="143.0" mnemonicParsing="false" onAction="#logIn" prefHeight="116.0" prefWidth="502.0" text="Log in">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a86ba00" height="95.0" layoutX="176.0" layoutY="377.0" stroke="#fff9f9" strokeType="INSIDE" width="372.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a86ba00" height="95.0" layoutX="222.0" layoutY="210.0" stroke="#fff9f9" strokeType="INSIDE" width="279.0" />
+      <Button layoutX="96.0" layoutY="195.0" mnemonicParsing="false" onAction="#logIn" prefHeight="125.0" prefWidth="532.0" style="-fx-background-color: opaque;" text="Log in" textFill="WHITE">
          <font>
             <Font name="Consolas" size="34.0" />
          </font>
       </Button>
-      <Button layoutX="121.0" layoutY="334.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="116.0" prefWidth="502.0" text="Create an Account">
+      <Button layoutX="110.0" layoutY="367.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="116.0" prefWidth="502.0" style="-fx-background-color: opaque;" text="Create an Account" textFill="WHITE">
          <font>
             <Font name="Consolas" size="34.0" />
          </font>
       </Button>
-      <Text layoutX="349.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR">
+      <Text fill="WHITE" layoutX="339.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR">
          <font>
             <Font name="Curlz MT" size="35.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="61.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose an Option:" underline="true">
+         <font>
+            <Font name="Sitka Small" size="65.0" />
          </font>
       </Text>
    </children>

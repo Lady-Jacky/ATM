@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -12,16 +13,19 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-
-    <Label fx:id="welcomeText" />
-    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#account" prefHeight="576.0" prefWidth="723.0" text="Bobby's Bank of Teyvat" translateY="-20.0">
+   <Group>
+      <children>
+         <AnchorPane />
+      </children>
+   </Group>
+    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#account" prefHeight="576.0" prefWidth="723.0" text="Bobby's Bank of Teyvat" translateY="-17.0">
       <font>
          <Font name="Jokerman" size="54.0" />
       </font>
       <effect>
-         <ImageInput>
+         <ImageInput y="10.0">
             <source>
-               <Image url="file:/C:/Users/Pushe/Downloads/Untitled%20design.png" />
+               <Image url="file:/C:/Users/student/Downloads/Untitled%20design.png" />
             </source>
          </ImageInput>
       </effect></Button>
