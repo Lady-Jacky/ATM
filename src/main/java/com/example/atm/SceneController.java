@@ -44,63 +44,148 @@ public class SceneController {
         stage.show();
     }
     public void logIn(ActionEvent event) throws IOException {
-        Text user = new Text("Username: ");
-        user.setX(100);
-        user.setY(90);
-        Text pass = new Text("Password: ");
-        pass.setX(100);
-        pass.setY(200);
-        Group root = new Group();
-        Scene menu = new Scene(root, 723, 576);
-
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(menu);
-        stage.show();
-    }
-
-    public void createAccount(ActionEvent event) throws IOException {
-        Button create = new Button("Create");
+        Parent mainMenu = FXMLLoader.load(getClass().getResource("accountsstuff.fxml"));
+        Button logIn = new Button("Log In");
+        logIn.setPrefSize(125, 50);
+        logIn.setLayoutX(400);
+        logIn.setLayoutY(410);
+        Button back = new Button("Back");
+        back.setPrefSize(125, 50);
+        back.setLayoutX(200);
+        back.setLayoutY(410);
         Group root = new Group();
         Scene menu = new Scene(root, 723, 576, Color.web("#373656", 1.0));
-        Text createAccount = new Text("Create an Account");
-        createAccount.setFont(Font.font("Jokerman", 64));
-        createAccount.setFill(Color.WHITE);
-        createAccount.setX(100);
-        createAccount.setY(100);
+        Text logIntoAccount = new Text("Login");
+        logIntoAccount.setUnderline(true);
+        logIntoAccount.setFont(Font.font("Jokerman", 50));
+        logIntoAccount.setFill(Color.WHITE);
+        logIntoAccount.setX(130);
+        logIntoAccount.setY(125);
         TextField username = new TextField();
         username.setPromptText("Create a username: ");
         username.setFocusTraversable(false);
         username.setBackground(fill(Color.web("#4c4c71", 1.0)));
         username.setStyle("-fx-text-inner-color: #FFFFFF;");
         username.setPrefSize(325, 50);
-        username.setLayoutX(100);
-        username.setLayoutY(150);
+        username.setLayoutX(200);
+        username.setLayoutY(200);
+        TextField password = new TextField();
+        password.setPromptText("Enter a password: ");
+        password.setFocusTraversable(false);
+        password.setBackground(fill(Color.web("#4c4c71", 1.0)));
+        password.setPrefSize(325, 50);
+        password.setStyle("-fx-text-inner-color: #FFFFFF;");
+        password.setLayoutX(200);
+        password.setLayoutY(300);
+        Text result = new Text();
+        result.setDisable(true);
+        result.setVisible(false);
+        result.setX(200);
+        result.setY(375);
+        result.setFill(Color.WHITE);
+        result.setFont(Font.font("Leger", 16));
+        root.getChildren().addAll(username, password, logIn, back, logIntoAccount, result);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(menu);
+        stage.show();
+
+        back.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                scene = new Scene(mainMenu);
+                stage.setScene(scene);
+            }
+        });
+
+        logIn.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                if (Accounts.checkInfo(username.getText(), password.getText())) {
+                    Group root = new Group();
+                    Scene atm = new Scene(root, 723, 576, Color.web("#373656", 1.0));
+                    Text savingsAmount = new Text("Cash: $" + String.format("%.2f", Accounts.getUserSavings()));
+                    Text welcome = new Text("Welcome, \n" + username.getText());
+                    welcome.setFill(Color.WHITE);
+                    welcome.setFont(Font.font("Leger", 16));
+                    welcome.setY(50);
+                    welcome.setX(50);
+                    savingsAmount.setY(150);
+                    savingsAmount.setX(50);
+                    savingsAmount.setFont(Font.font("Leger", 36));
+                    Rectangle box1 = new Rectangle(200, 75);
+                    box1.setFill(Color.web("#4B4A75"));
+                    box1.setX(40);
+                    box1.setY(100);
+                    savingsAmount.setFill(Color.WHITE);
+                    root.getChildren().addAll(welcome, box1, savingsAmount);
+                    stage.setScene(atm);
+                    stage.show();
+
+                } else {
+                    result.setText(Accounts.checkLogIn(username.getText(), password.getText()));
+                    result.setDisable(false);
+                    result.setVisible(true);
+                }
+            }
+        });
+    }
+
+    public void createAccount(ActionEvent event) throws IOException {
+        Parent mainMenu = FXMLLoader.load(getClass().getResource("accountsstuff.fxml"));
+        Button create = new Button("Create");
+        create.setPrefSize(125, 50);
+        create.setLayoutX(400);
+        create.setLayoutY(410);
+        Button back = new Button("Back");
+        back.setPrefSize(125, 50);
+        back.setLayoutX(200);
+        back.setLayoutY(410);
+        Group root = new Group();
+        Scene menu = new Scene(root, 723, 576, Color.web("#373656", 1.0));
+        Text createAccount = new Text("Create an Account");
+        createAccount.setUnderline(true);
+        createAccount.setFont(Font.font("Jokerman", 50));
+        createAccount.setFill(Color.WHITE);
+        createAccount.setX(130);
+        createAccount.setY(125);
+        TextField username = new TextField();
+        username.setPromptText("Create a username: ");
+        username.setFocusTraversable(false);
+        username.setBackground(fill(Color.web("#4c4c71", 1.0)));
+        username.setStyle("-fx-text-inner-color: #FFFFFF;");
+        username.setPrefSize(325, 50);
+        username.setLayoutX(200);
+        username.setLayoutY(200);
         TextField password = new TextField();
         password.setPromptText("Create a password: ");
         password.setFocusTraversable(false);
         password.setBackground(fill(Color.web("#4c4c71", 1.0)));
         password.setPrefSize(325, 50);
         password.setStyle("-fx-text-inner-color: #FFFFFF;");
-        password.setLayoutX(100);
-        password.setLayoutY(250);
+        password.setLayoutX(200);
+        password.setLayoutY(300);
         Text result = new Text();
         result.setDisable(true);
         result.setVisible(false);
-        result.setX(100);
-        result.setY(300);
+        result.setX(200);
+        result.setY(375);
         result.setFill(Color.WHITE);
-        result.setFont(Font.font("Jokerman", 32));
-        root.getChildren().addAll(username, password, create, createAccount, result);
+        result.setFont(Font.font("Leger", 16));
+        root.getChildren().addAll(username, password, create, back, createAccount, result);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(menu);
         stage.show();
 
         create.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                System.out.println(username.getText());
                 result.setText(Accounts.createAccount(username.getText(), password.getText()));
                 result.setDisable(false);
                 result.setVisible(true);
+            }
+        });
+
+        back.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                scene = new Scene(mainMenu);
+                stage.setScene(scene);
             }
         });
     }
