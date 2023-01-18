@@ -1,32 +1,23 @@
 package com.example.atm;
 
 import javafx.event.ActionEvent;
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.layout.GridPane;
-import java.io.IOException;
 
 import java.io.IOException;
+
 
 import static javafx.scene.layout.Background.*;
 
@@ -35,6 +26,9 @@ public class SceneController {
     private Scene scene;
     private String username;
     private String password;
+
+    private Parent withdrew;
+
 
     public void account(ActionEvent event) throws IOException {
         Parent mainMenu = FXMLLoader.load(getClass().getResource("accountsstuff.fxml"));
@@ -88,6 +82,7 @@ public class SceneController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(menu);
         stage.show();
+        withdrew = FXMLLoader.load(getClass().getResource("stuff.fxml"));
 
         back.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -122,7 +117,7 @@ public class SceneController {
                     deposit.setLayoutY(230);
                     deposit.setBackground(Background.fill(Color.web("#4B4A75")));
                     Button withdraw = new Button("Withdraw");
-                    withdraw.setTextFill(Color.web("#EDF2F4"));
+//                    withdraw.setTextFill(Color.web("#EDF2F4"));
                     withdraw.setPrefSize(150, 75);
                     withdraw.setLayoutX(230);
                     withdraw.setLayoutY(230);
@@ -130,6 +125,14 @@ public class SceneController {
                     root.getChildren().addAll(welcome, box1, savingsAmount, deposit, withdraw);
                     stage.setScene(atm);
                     stage.show();
+
+                    withdraw.setOnAction(new EventHandler<ActionEvent>() {
+                        public void handle(ActionEvent event) {
+                            Scene withdraw = new Scene(withdrew);
+                            stage.setScene(withdraw);
+                            stage.show();
+                        }
+                    });
 
                 } else {
                     result.setText(Accounts.checkLogIn(username.getText(), password.getText()));
