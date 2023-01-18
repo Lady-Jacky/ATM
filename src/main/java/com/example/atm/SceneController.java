@@ -110,12 +110,24 @@ public class SceneController {
                     savingsAmount.setY(150);
                     savingsAmount.setX(50);
                     savingsAmount.setFont(Font.font("Leger", 36));
-                    Rectangle box1 = new Rectangle(200, 75);
+                    Rectangle box1 = new Rectangle(250, 75);
                     box1.setFill(Color.web("#4B4A75"));
                     box1.setX(40);
                     box1.setY(100);
                     savingsAmount.setFill(Color.WHITE);
-                    root.getChildren().addAll(welcome, box1, savingsAmount);
+                    Button deposit = new Button("Deposit");
+                    deposit.setTextFill(Color.web("#EDF2F4"));
+                    deposit.setPrefSize(150, 75);
+                    deposit.setLayoutX(40);
+                    deposit.setLayoutY(230);
+                    deposit.setBackground(Background.fill(Color.web("#4B4A75")));
+                    Button withdraw = new Button("Withdraw");
+                    withdraw.setTextFill(Color.web("#EDF2F4"));
+                    withdraw.setPrefSize(150, 75);
+                    withdraw.setLayoutX(230);
+                    withdraw.setLayoutY(230);
+                    withdraw.setBackground(Background.fill(Color.web("#4B4A75")));
+                    root.getChildren().addAll(welcome, box1, savingsAmount, deposit, withdraw);
                     stage.setScene(atm);
                     stage.show();
 
