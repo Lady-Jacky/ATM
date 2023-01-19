@@ -1,17 +1,15 @@
 package com.example.atm;
 
 public class Accounts {
-    private static String[] accountUser = new String[100];
-    private static String[] accountPass = new String[100];
+    private static Customer[] account = new Customer[100];
     private static double[] userSavings = new double[100];
     private static double[] userChecks = new double[100];
     private static int count = 0;
     private static String currentUser = "";
 
 
-    public static void addAccount(String username, String password) {
-        accountUser[count] = username;
-        accountPass[count] = password;
+    public static void addAccount(Customer thing) {
+        account[count] = thing;
         userSavings[count] = 0.0;
         userChecks[count] = 0.0;
         count++;
@@ -25,8 +23,8 @@ public class Accounts {
     }
 
     private static int findUser() {
-        for (int i = 0; i < accountUser.length; i++) {
-            if (accountUser[i] != null && accountUser[i].equals(currentUser)) {
+        for (int i = 0; i < account.length; i++) {
+            if (account[i] != null && account[i].equals(currentUser)) {
                 return i;
             }
         }
@@ -34,12 +32,12 @@ public class Accounts {
     }
 
     public static boolean checkAvaliability(String username) {
-        if (accountUser.length >= 0 && accountPass.length >= 0) {
-            for (String user : accountUser) {
+        if (account.length >= 0) {
+            for (Customer user : account) {
                 if(user == null) {
                     return true;
                 }
-                if (user.equals(username)) {
+                if (user.getName().equals(username)) {
                     return false;
                 }
             }
@@ -50,10 +48,10 @@ public class Accounts {
     }
 
     public static boolean checkInfo(String username, String password) {
-        if (accountUser.length >= 0 && accountPass.length >= 0) {
-            for (int i = 0; i < accountUser.length; i++) {
-                if(accountUser[i] != null && accountUser[i].equals(username)) {
-                    if(password.equals(accountPass[i])) {
+        if (account.length >= 0) {
+            for (int i = 0; i < account.length; i++) {
+                if(account[i] != null && account[i].getName().equals(username)) {
+                    if(password.equals(account[i].getPin())) {
                         return true;
                     }
                 }
@@ -71,7 +69,8 @@ public class Accounts {
         }else if ((username.equals("") || password.equals(""))) {
             return "Username and password cannot be left blank.";
         } else {
-            addAccount(username, password);
+            Customer thing = new Customer(username, password);
+            addAccount(thing);
             return "Account created. Return and log in";
         }
     }
@@ -84,5 +83,9 @@ public class Accounts {
         }
         currentUser = username;
         return "You are now logged in";
+    }
+
+    public void updateMoney(double[] account1, double[] account2) {
+
     }
 }

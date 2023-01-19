@@ -60,7 +60,7 @@
          </font>
       </Label>
       <ChoiceBox fx:id="whichAccount" layoutX="166.0" layoutY="104.0" prefWidth="150.0" />
-      <Label fx:id="suffer" layoutX="480.0" layoutY="141.0" textFill="WHITE">
+      <Label fx:id="suffer" layoutX="480.0" layoutY="141.0" text="\$$$" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="20.0" />
          </font>
