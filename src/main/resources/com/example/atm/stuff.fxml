@@ -34,6 +34,7 @@
 
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -42,11 +43,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="723.0" style="-fx-background-color: #373656;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.atm.ChoiceBox">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a86ba00" height="95.0" layoutX="176.0" layoutY="377.0" stroke="#fff9f9" strokeType="INSIDE" width="267.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a86ba00" height="199.0" layoutX="37.0" layoutY="202.0" stroke="#fff9f9" strokeType="INSIDE" width="357.0">
          <effect>
             <GaussianBlur />
          </effect></Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a86ba00" height="95.0" layoutX="37.0" layoutY="69.0" stroke="#fff9f9" strokeType="INSIDE" width="300.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a86ba00" height="95.0" layoutX="37.0" layoutY="69.0" stroke="#fff9f9" strokeType="INSIDE" width="282.0">
          <effect>
             <Bloom>
                <input>
@@ -54,21 +55,24 @@
                </input>
             </Bloom>
          </effect></Rectangle>
-      <Label layoutX="46.0" layoutY="85.0" text="From: " textFill="WHITE">
+      <Label layoutX="46.0" layoutY="85.0" prefHeight="53.0" prefWidth="101.0" text="From: " textFill="WHITE" underline="true">
          <font>
-            <Font size="43.0" />
+            <Font name="Agency FB" size="43.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="whichAccount" layoutX="166.0" layoutY="104.0" prefWidth="150.0" />
-      <Label fx:id="suffer" layoutX="480.0" layoutY="141.0" text="\$$$" textFill="WHITE">
+      <ChoiceBox fx:id="whichAccount" layoutX="141.0" layoutY="104.0" prefWidth="150.0" />
+      <Label fx:id="suffer" layoutX="428.0" layoutY="69.0" prefHeight="53.0" prefWidth="268.0" textFill="WHITE">
          <font>
-            <Font name="Berlin Sans FB" size="20.0" />
+            <Font name="Agency FB" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="money" layoutX="256.0" layoutY="401.0" prefHeight="47.0" prefWidth="108.0" textFill="WHITE">
+      <Label layoutX="46.0" layoutY="158.0" prefHeight="183.0" prefWidth="225.0" text="Withdraw Amount:" textFill="WHITE" underline="true">
          <font>
-            <Font name="Agency FB" size="38.0" />
+            <Font name="Agency FB" size="31.0" />
          </font>
       </Label>
+      <TextField fx:id="amount" layoutX="230.0" layoutY="232.0" prefHeight="36.0" prefWidth="150.0" promptText="Total Amount" />
+      <TextField fx:id="fives" layoutX="230.0" layoutY="288.0" prefHeight="36.0" prefWidth="150.0" promptText="Amount of 5s" />
+      <TextField fx:id="twenties" layoutX="230.0" layoutY="341.0" prefHeight="36.0" prefWidth="150.0" promptText="Amount of 20s" />
    </children>
 </AnchorPane>

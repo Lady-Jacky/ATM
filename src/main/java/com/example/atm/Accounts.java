@@ -18,6 +18,9 @@ public class Accounts {
     public static double getUserSavings() {
         return userSavings[findUser()];
     }
+    public static double getUserChecks() {
+        return userChecks[findUser()];
+    }
     public static String getCurrentUser() {
         return currentUser;
     }

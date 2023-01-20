@@ -110,12 +110,12 @@
             <Font name="Curlz MT" size="35.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="95.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose an Option:" underline="true">
+      <Text fill="WHITE" layoutX="86.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose an Option:" underline="true" wrappingWidth="572.7181396484375">
          <font>
-            <Font name="Sitka Small" size="65.0" />
+            <Font name="Sitka Small" size="59.0" />
          </font>
          <effect>
-            <MotionBlur radius="4.7" />
+            <MotionBlur radius="0.0" />
          </effect>
       </Text>
    </children>
